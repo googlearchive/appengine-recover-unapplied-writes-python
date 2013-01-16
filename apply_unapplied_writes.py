@@ -27,7 +27,7 @@ Sample usage using remote_api:
   * Enable remote_api for your application
     (see https://developers.google.com/appengine/articles/remote_api)
   * Change to a directory where this module exists.
-  * Run remote_api_shell.py -s apply-writes.$YOURAPPID.appspot.com
+  * Run remote_api_shell.py -s apply-writes.your-app-id.appspot.com
   * In the remote_api_shell, run the following:
     import apply_unapplied_writes
     apply_unapplied_writes.apply_entity_by_name(YOURKIND, A KEY NAME OR ID)
@@ -45,7 +45,7 @@ Sample usage using the map reduce framework:
           params:
           - name: entity_kind
             default: models.__unapplied_write__MyModel
-  * Visit http://YOURAPP.appspot.com/mapreduce/
+  * Visit http://apply-writes.your-app-id.appspot.com/mapreduce/
   * Select 'Apply Unapplied Entity Writes' from the dropdown.
   * Enter the kind you wish to apply.
   * Click Launch Job.
