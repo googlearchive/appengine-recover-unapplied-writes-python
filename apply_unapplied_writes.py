@@ -45,7 +45,7 @@ Sample usage using the map reduce framework:
           params:
           - name: entity_kind
             default: models.__unapplied_write__MyModel
-  * Visit http://apply-writes.your-app-id.appspot.com/mapreduce/
+  * Visit https://apply-writes-dot-your-app-id.appspot.com/mapreduce/
   * Select 'Apply Unapplied Entity Writes' from the dropdown.
   * Enter the kind you wish to apply.
   * Click Launch Job.
