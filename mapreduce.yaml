@@ -1,5 +1,5 @@
 # Sample mapreduce configuration for applying unapplied writes.
-#
+
 mapreduce:
 - name: "Apply Unapplied Entity Writes"
   mapper:
@@ -8,4 +8,3 @@ mapreduce:
     params:
      - name: entity_kind
        default: models.__unapplied_write__MyModel
-

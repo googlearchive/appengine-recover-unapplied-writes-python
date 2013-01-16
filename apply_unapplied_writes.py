@@ -1,6 +1,18 @@
-#!/usr/bin/python2.4
+#!/usr/bin/env python
+
+# Copyright (C) 2010-2012 Google Inc.
 #
-# Copyright 2010 Google Inc.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 """Methods to fix unapplied writes.
 
@@ -12,34 +24,36 @@ This module contains methods for applying those writes.
 Currently it contains methods which work at the datastore low level API.
 
 Sample usage using remote_api:
-  * Enable remote_api for your application 
-    (see http://code.google.com/appengine/articles/remote_api.html )
+  * Enable remote_api for your application
+    (see https://developers.google.com/appengine/articles/remote_api)
   * Change to a directory where this module exists.
-  * Run remote_api_shell.py $YOURAPPID
+  * Run remote_api_shell.py -s $YOURAPPID.appspot.com
   * In the remote_api_shell, run the following:
     import apply_unapplied_writes
     apply_unapplied_writes.apply_entity_by_name(YOURKIND, A KEY NAME OR ID)
 
-
 Sample usage using the map reduce framework:
   * Install the map reduce framework in your app.
-    (see http://code.google.com/p/appengine-mapreduce/ )
+    (see http://code.google.com/p/appengine-mapreduce/)
   * Add this module to your app.
   * Add the following to the mapreduce.yaml file:
       mapreduce:
-      - name: "Apply unapplied writes"
+      - name: "Apply Unapplied Entity Writes"
         mapper:
           input_reader: mapreduce.input_readers.DatastoreInputReader
           handler: apply_unapplied_writes.apply_model_instance
           params:
           - name: entity_kind
-  * Visit http://YOURAPP.appspot.com/mapreduce/ ,
-  * Select 'Unapplied Entity Map' from the dropdown.
+            default: models.__unapplied_write__MyModel
+  * Visit http://YOURAPP.appspot.com/mapreduce/
+  * Select 'Apply Unapplied Entity Writes' from the dropdown.
   * Enter the kind you wish to apply.
   * Click Launch Job.
 """
 
+
 import logging
+
 from google.appengine.api import datastore
 
 
@@ -48,7 +62,7 @@ UNAPPLIED_WRITE_KIND_PREFIX_LEN = len(UNAPPLIED_WRITE_KIND_PREFIX)
 
 
 def apply_entity(unapplied_entity, delete_unapplied_entity=True):
-  """Re-write an entity representing an unapplied write  to apply it.
+  """Re-write an entity representing an unapplied write to apply it.
 
   Args:
     entity: An app engine datastore entity, typically loaded by datastore.Get.
@@ -124,4 +138,3 @@ def apply_model_instance(model_instance, delete_unapplied_entity=True):
   """
   unapplied_entity = model_instance._populate_entity()
   apply_entity(unapplied_entity, delete_unapplied_entity)
-

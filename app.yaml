@@ -1,17 +1,14 @@
-# A sample app.yaml file--you can upload this to an
+# A sample app.yaml file -- you can upload this to an
 # alternate version of your application with appcfg.py -A yourapp
-application: YOUR APPLICATION 
+
+application: recover-unapplied-writes
 version: applywrites
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: false
 
-handlers:
-- url: /remote_api
-  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
-  login: admin
+includes:
+- mapreduce/include.yaml
 
-
-- url: /mapreduce(/.*)?
-  script: mapreduce/main.py
-  login: admin
-
+builtins:
+- remote_api: on
