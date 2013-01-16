@@ -1,0 +1,4 @@
+mapreduce/
+
+# Compiled Python
+*.py[cod]

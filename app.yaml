@@ -1,0 +1,14 @@
+# A sample app.yaml file -- you can upload this to an
+# alternate version of your application with appcfg.py -A your-app-id
+
+application: your-app-id
+version: apply-writes
+runtime: python27
+api_version: 1
+threadsafe: false
+
+includes:
+- mapreduce/include.yaml
+
+builtins:
+- remote_api: on
