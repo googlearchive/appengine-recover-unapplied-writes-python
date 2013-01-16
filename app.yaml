@@ -1,5 +1,5 @@
 # A sample app.yaml file -- you can upload this to an
-# alternate version of your application with appcfg.py -A yourapp
+# alternate version of your application with appcfg.py -A your-app-id
 
 application: recover-unapplied-writes
 version: applywrites

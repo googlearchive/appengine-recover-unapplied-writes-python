@@ -6,5 +6,5 @@ datastore.
 
 You can upload this application to an alternate version of your application
 without changing the contents of `app.yaml`. By executing
-`appcfg.py -A yourapp` from the command line, the application ID from
-`app.yaml` will be replaced with `yourapp`.
+`appcfg.py -A your-app-id` from the command line, the application ID from
+`app.yaml` will be replaced with `your-app-id`.
